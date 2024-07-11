@@ -128,7 +128,7 @@ impl<'a> Layer<'a> {
     ///
     /// # Safety
     /// This method operates on a raw C pointer
-    pub(crate) unsafe fn from_c_layer(_: &'a Dataset, c_layer: OGRLayerH) -> Self {
+    pub unsafe fn from_c_layer(_: &'a Dataset, c_layer: OGRLayerH) -> Self {
         let c_defn = gdal_sys::OGR_L_GetLayerDefn(c_layer);
         let defn = Defn::from_c_defn(c_defn);
         Self {
@@ -183,7 +183,7 @@ impl OwnedLayer {
     ///
     /// # Safety
     /// This method operates on a raw C pointer
-    pub(crate) unsafe fn from_c_layer(dataset: Dataset, c_layer: OGRLayerH) -> Self {
+    pub unsafe fn from_c_layer(dataset: Dataset, c_layer: OGRLayerH) -> Self {
         let c_defn = gdal_sys::OGR_L_GetLayerDefn(c_layer);
         let defn = Defn::from_c_defn(c_defn);
         Self {
