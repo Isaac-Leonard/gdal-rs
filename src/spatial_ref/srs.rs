@@ -13,7 +13,7 @@ use crate::errors::*;
 /// # Notes
 /// * See also: [OGR Coordinate Reference Systems and Coordinate Transformation Tutorial](https://gdal.org/tutorials/osr_api_tut.html)
 /// * Consult the [OGC WKT Coordinate System Issues](https://gdal.org/tutorials/wktproblems.html)
-/// page for implementation details of WKT in OGR.
+///   page for implementation details of WKT in OGR.
 #[derive(Debug)]
 pub struct SpatialRef(gdal_sys::OGRSpatialReferenceH);
 
@@ -51,6 +51,7 @@ impl SpatialRef {
     /// # Safety
     /// The handle passed to this function must be valid.
     pub unsafe fn from_c_obj(c_obj: gdal_sys::OGRSpatialReferenceH) -> Result<SpatialRef> {
+        assert!(!c_obj.is_null(), "Expected a pointer that is not null");
         let mut_c_obj = gdal_sys::OSRClone(c_obj);
         if mut_c_obj.is_null() {
             Err(_last_null_pointer_err("OSRClone"))

@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- Add a `bundled` feature for `gdal-sys` that allows to build and statically link a minimal bundled version of gdal during `cargo build`
+
+## 0.17.1
+
+### Added
+ - Added `Buffer<T>::width` and `Buffer<T>::height` ([#550](https://github.com/georust/gdal/pull/550))
+
+### Fixed
+ - Fixed incorrect bounds check in `Buffer<T>` indexing ([#550](https://github.com/georust/gdal/pull/550))
+
+## 0.17
+
+- Added pre-built bindings for GDAL 3.9
+
+   - <https://github.com/georust/gdal/pull/539>
+
 - Added `Rasterband::fill`
   - <https://github.com/georust/gdal/pull/528>
 
@@ -78,7 +94,6 @@
 - Added pre-built bindings for GDAL 3.8
 
    - <https://github.com/georust/gdal/pull/466>
-
 
 - Added `{Display|FromStr} for ResampleAlg` and `ResampleAlg::iter`.
 
